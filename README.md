@@ -88,42 +88,43 @@ Unity를 사용한 인공지능 테트리스
       }
   ```
   - AIBlockLogic
-    ```
-    if(!XY())
+```
+if(!XY())
+{
+    FindObjectOfType<AiLogic>().NewAiTetris(point);
+    Destroy(gameObject);
+    this.enabled = false;
+}
+else
+{
+    point = 0;
+    while (Valid())
+        transform.position += new Vector3(0, -1, 0); // 이동
+    foreach (Transform children in transform)
     {
-        FindObjectOfType<AiLogic>().NewAiTetris(point);
-        Destroy(gameObject);
-        this.enabled = false;
+        int roundX = Mathf.RoundToInt(children.transform.position.x);
+        int roundY = Mathf.RoundToInt(children.transform.position.y);
+
+        BlockLogic2.grid[roundX, roundY] = children;
     }
-    else
+    SidePoint();
+    BlankPoint();
+    NearPoint();
+    LinePoint();
+    Height();
+
+    foreach (Transform children in transform)
     {
-        point = 0;
-        while (Valid())
-            transform.position += new Vector3(0, -1, 0); // 이동
-        foreach (Transform children in transform)
-        {
-            int roundX = Mathf.RoundToInt(children.transform.position.x);
-            int roundY = Mathf.RoundToInt(children.transform.position.y);
-
-            BlockLogic2.grid[roundX, roundY] = children;
-        }
-        SidePoint();
-        BlankPoint();
-        NearPoint();
-        LinePoint();
-        Height();
-
-        foreach (Transform children in transform)
-        {
-            int roundX = Mathf.RoundToInt(children.transform.position.x);
-            int roundY = Mathf.RoundToInt(children.transform.position.y);
-            BlockLogic2.grid[roundX, roundY] = null;
-        }
-        FindObjectOfType<AiLogic>().NewAiTetris(point);
-        Destroy(this.gameObject);
-        this.enabled = false;
+        int roundX = Mathf.RoundToInt(children.transform.position.x);
+        int roundY = Mathf.RoundToInt(children.transform.position.y);
+        BlockLogic2.grid[roundX, roundY] = null;
     }
-  ```
+    FindObjectOfType<AiLogic>().NewAiTetris(point);
+    Destroy(this.gameObject);
+    this.enabled = false;
+}
+```
+
 ## 7. 개발내용 및 실행화면
 ### 7.1. 메뉴화면
  - 버튼을 누르면 게임 화면으로 실행된다.
