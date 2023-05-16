@@ -58,6 +58,7 @@ Unity를 사용한 인공지능 테트리스
 
 ## 6. 주요 알고리즘
 - AI Paly의 블록생성 알고리즘
+
 ![image](https://github.com/KitYoonJeongmin/Tetris/assets/102850131/9130851a-f069-48f3-80a0-4294796b6ec8)
   - AI Logic
   ```
