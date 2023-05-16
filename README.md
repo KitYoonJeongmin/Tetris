@@ -30,7 +30,7 @@ Unity를 사용한 인공지능 테트리스
 
 
 ## 3. 시스템 구성
- - 씬에따라 사용된 c#파일
+ - 씬에따라 사용된 c#파일</br>
 ![image](https://github.com/KitYoonJeongmin/Tetris/assets/102850131/044b73e5-0e2e-4ef8-9bb0-6eab1da6bf37)
 
 ## 4. 자료구조 설계
